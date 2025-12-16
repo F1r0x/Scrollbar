@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout con menú lateral</title>
+    <link rel="preload" as="image" href="banner.webp">
+    <style>
+        :root {
+            --menu-width: 380px;
+            --menu-bg: #1a1a1a;
+            --menu-text: #ffffff;
+            --menu-hover: #2a2a2a;
+            --accent: #4da3ff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, sans-serif;
+            color: #222;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ===== MENÚ LATERAL ===== */
+        #contenedor-menu-lateral {
+            width: var(--menu-width);
+            position: fixed;
+            inset: 0 auto 0 0;
+            background-color: var(--menu-bg);
+            color: var(--menu-text);
+            display: flex;
+            flex-direction: column;
+        }
+
+        #contenedor-menu-lateral img {
+            padding: 16px;
+        }
+
+        nav {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav li a {
+            display: block;
+            padding: 12px 20px;
+            color: inherit;
+            text-decoration: none;
+            transition: background 0.2s ease, padding-left 0.2s ease;
+        }
+
+        nav li a:hover,
+        nav li a:focus {
+            background-color: var(--menu-hover);
+            padding-left: 28px;
+        }
+
+        /* ===== CONTENIDO ===== */
+        #contenedor-central {
+            margin-left: var(--menu-width);
+            padding: 32px;
+            max-width: 1200px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1400px) {
+            :root { --menu-width: 350px; }
+        }
+
+        @media (max-width: 1200px) {
+            :root { --menu-width: 300px; }
+        }
+
+        @media (max-width: 1000px) {
+            :root { --menu-width: 250px; }
+        }
+
+        @media (max-width: 800px) {
+            #contenedor-menu-lateral {
+                display: none;
+            }
+
+            #contenedor-central {
+                margin-left: 0;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <aside id="contenedor-menu-lateral">
+        <img src="banner.webp" alt="jQuery logo">
+
+        <nav aria-label="Navegación principal">
+            <ul>
+                <li><a href="#">Introducción</a></li>
+                <li><a href="#">Selectores</a></li>
+                <li><a href="#">Eventos</a></li>
+                <li><a href="#">AJAX</a></li>
+                <li><a href="#">Plugins</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main id="contenedor-central">
+        <h1>Contenido</h1>
+        <p>Aquí va el contenido de la web.</p>
+    </main>
+
+</body>
+</html>
